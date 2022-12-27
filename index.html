@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="box-top"></div>
+        <form action="" id="form">
+            <h1 class="form-title">Negociação de Débitos</h1>
+            <p class="form-description">Por favor, preencha os campos abaixo para que possamos localizar o seu débito e entrar em contato com você.
+            </p>
+            <div class="inputs-container">
+                <div class="input-container">
+                    <label for="cnpj">CNPJ *</label>
+                    <input required class="default-input" id="cnpj" name="cnpj" type="text">
+                </div>
+                <div class="input-container">
+                    <label for="razao-social" >Razão social *</label>
+                    <input required class="default-input" id="razao-social" name="razao-social" type="text">
+                </div>
+                <div class="input-container">
+                    <label for="estado">Estado *</label>
+                    <select class="default-input" required id="estado" name="estado">
+                        <option value="" disabled hidden selected></option>
+                        <option value="AC">Acre</option>
+                        <option value="AL">Alagoas</option>
+                        <option value="AP">Amapá</option>
+                        <option value="AM">Amazonas</option>
+                        <option value="BA">Bahia</option>
+                        <option value="CE">Ceará</option>
+                        <option value="DF">Distrito Federal</option>
+                        <option value="ES">Espírito Santo</option>
+                        <option value="GO">Goiás</option>
+                        <option value="MA">Maranhão</option>
+                        <option value="MT">Mato Grosso</option>
+                        <option value="MS">Mato Grosso do Sul</option>
+                        <option value="MG">Minas Gerais</option>
+                        <option value="PA">Pará</option>
+                        <option value="PB">Paraíba</option>
+                        <option value="PR">Paraná</option>
+                        <option value="PE">Pernambuco</option>
+                        <option value="PI">Piauí</option>
+                        <option value="RJ">Rio de Janeiro</option>
+                        <option value="RN">Rio Grande do Norte</option>
+                        <option value="RS">Rio Grande do Sul</option>
+                        <option value="RO">Rondônia</option>
+                        <option value="RR">Roraima</option>
+                        <option value="SC">Santa Catarina</option>
+                        <option value="SP">São Paulo</option>
+                        <option value="SE">Sergipe</option>
+                        <option value="TO">Tocantins</option>
+                        <option value="EX">Estrangeiro</option>
+                    </select>
+                </div>
+                <div class="input-container">
+                    <label for="cidade">Cidade *</label>
+                    <input required class="default-input" type="text" id="cidade" name="cidade">
+                </div>
+                <div class="input-container">
+                    <label for="nome-contato">Nome do responsável por este contato *</label>
+                    <input required class="default-input" type="text" id="nome-contato" name="nome-contato">
+                </div>
+                <div class="input-container">
+                    <label for="telefone-fixo">Telefone fixo *</label>
+                    <input required class="default-input" type="tel" id="telefone-fixo" onkeyup="handlePhone(event)" maxlength="15" name="telefone-fixo">
+                </div>
+                <div class="input-container">
+                    <label for="telefone-celular">Telefone celular *</label>
+                    <input maxlength="15" required class="default-input" type="tel" onkeyup="handlePhone(event)"  name="telefone-celular" id="telefone-celular">
+                </div>
+                <div class="input-container">
+                    <label for="email">E-mail *</label>
+                    <input required class="default-input" type="email" id="email" name="email">
+                </div>
+                <div class="radio-inputs-container">
+                    <label>É a primeira vez que você entra em contato com a Tambasa sobre este débito?*
+                    </label>
+                    <div class="radio-inputs">
+                        <div class="radio-input">
+                            <input required class="test" type="radio" name="questao" id="sim">
+                            <label for="sim">Sim</label>
+                        </div>
+                        <div class="radio-input">
+                            <input required class="test" type="radio" name="questao" id="não">
+                            <label for="não">Não</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="debito">
+                <label>Débito *</label>
+                <div class="debito-inner">
+                    <div class="debito-input-container">
+                        <label for="numero-nota-fiscal">Número da nota fiscal</label>
+                        <input required class="default-input" name="numero-nota-fiscal" id="numero-nota-fiscal" type="text">
+                    </div>
+                    <div class="debito-input-container">
+                        <label for="data-nota-fiscal">Data da nota fiscal</label>
+                        <input required class="default-input" name="data-nota-fiscal" id="data-nota-fiscal" type="text">
+                    </div>
+                    <div class="debito-input-container">
+                        <label for="numero-nota-fiscal">Valor em aberto</label>
+                        <input required class="default-input" id="valor-em-aberto" name="valor-em-aberto" type="text">
+                    </div>
+                    <img src="list-add.svg" class="list-add" alt="">
+                </div>
+            </div>
+            <button class="submit-btn">Enviar</button>
+        </form>
+    </div>
+</body>
+<script src="script.js"></script>
+</html>
